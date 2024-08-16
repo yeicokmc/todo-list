@@ -9,6 +9,7 @@
 input,
 button {
   font: inherit;
+  border: none;
 }
 
 li {
@@ -148,4 +149,36 @@ main::-webkit-scrollbar {
 #task-input button:is(:hover, :focus) {
   background-color: #60bdf4;
   cursor: pointer;
+}
+
+.task-container {
+  margin: 0.4em;
+  padding: 0 15px;
+  background-color: #edebeb;
+  border-radius: 15;
+}
+
+.task-container .task {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.task-container .task-controls .edit-btn {
+  color: green;
+}
+
+.task-container .task-controls .delete-btn {
+  color: #df5252;
+  transition: color 0.3ss;
+}
+
+.task-container .task-controls .edit-btn:is(:hover, :focus) {
+  color: rgb(100, 226, 100);
+  cursor: pointer;
+}
+
+.task-container .task-controls .delete-btn:is(:hover, :focus) {
+  color: #ff0000;
+  transition: color 0.3s;
 }
