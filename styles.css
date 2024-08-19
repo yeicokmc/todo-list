@@ -182,3 +182,35 @@ main::-webkit-scrollbar {
   color: #ff0000;
   transition: color 0.3s;
 }
+
+.task-edit-modal {
+  max-width: 600px;
+  border: none;
+  padding: 1em;
+  background-color: white;
+  border-radius: 25px;
+  top: 35%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.task-edit-modal input {
+  display: block;
+  border: none;
+  padding: 0 15px;
+  margin-bottom: 20px;
+}
+
+.task-edit-modal button {
+  background-color: #60bdf4;
+  border-radius: none;
+  border-radius: 10px;
+  padding: 0 15px;
+  color: #f5f5f5;
+}
+.task-edit-modal button#task-edit-btn-close {
+  background-color: #ff0000;
+}
+.task-edit-modal button:hover {
+  cursor: po;
+}
