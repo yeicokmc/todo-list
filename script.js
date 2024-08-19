@@ -26,7 +26,7 @@ addTaskBtn.addEventListener("click", function (e) {
 tasksContainers.addEventListener("click", function (e) {
   const target = e.target;
   const li = target.closest("li");
-  if ((target.dataset, edit)) {
+  if (target.dataset.edit) {
     //  taskEditModal.showModal();
     // taskEditModal.dataset.taskId = target.dataset.edit;
     const newTask = prompt("escribe tu todo");
