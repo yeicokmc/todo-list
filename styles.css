@@ -169,8 +169,8 @@ main::-webkit-scrollbar {
 }
 
 .task-container .task-controls .delete-btn {
-  color: #df5252;
-  transition: color 0.3ss;
+  color: #ff0000;
+  transition: color 0.3s;
 }
 
 .task-container .task-controls .edit-btn:is(:hover, :focus) {
@@ -179,7 +179,7 @@ main::-webkit-scrollbar {
 }
 
 .task-container .task-controls .delete-btn:is(:hover, :focus) {
-  color: #ff0000;
+  color: #df9f9f;
   transition: color 0.3s;
 }
 
