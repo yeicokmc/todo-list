@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -16,81 +17,47 @@ li {
   list-style: none;
 }
 
+/* BODY */
 body {
-  background-image: radial-gradient(
-      circle at 48% 33%,
-      rgba(255, 255, 255, 0.04) 0%,
-      rgba(255, 255, 255, 0.04) 8%,
-      transparent 8%,
-      transparent 92%
-    ),
-    radial-gradient(
-      circle at 28% 16%,
-      rgba(255, 255, 255, 0.04) 0%,
-      rgba(255, 255, 255, 0.04) 8%,
-      transparent 8%,
-      transparent 92%
-    ),
-    radial-gradient(
-      circle at 34% 52%,
-      rgba(77, 28, 28, 0.03) 0%,
-      rgba(77, 28, 28, 0.03) 6%,
-      transparent 6%,
-      transparent 94%
-    ),
-    radial-gradient(
-      circle at 92% 52%,
-      rgba(77, 28, 28, 0.03) 0%,
-      rgba(77, 28, 28, 0.03) 6%,
-      transparent 6%,
-      transparent 94%
-    ),
-    radial-gradient(
-      circle at 77% 84%,
-      rgba(77, 28, 28, 0.03) 0%,
-      rgba(77, 28, 28, 0.03) 6%,
-      transparent 6%,
-      transparent 94%
-    ),
-    radial-gradient(
-      circle at 75% 64%,
-      rgba(77, 28, 28, 0.03) 0%,
-      rgba(77, 28, 28, 0.03) 6%,
-      transparent 6%,
-      transparent 94%
-    ),
-    radial-gradient(
-      circle at 70% 62%,
-      rgba(255, 255, 255, 0.04) 0%,
-      rgba(255, 255, 255, 0.04) 4%,
-      transparent 4%,
-      transparent 96%
-    ),
-    radial-gradient(
-      circle at 55% 100%,
-      rgba(255, 255, 255, 0.04) 0%,
-      rgba(255, 255, 255, 0.04) 4%,
-      transparent 4%,
-      transparent 96%
-    ),
-    radial-gradient(
-      circle at 12% 11%,
-      rgba(255, 255, 255, 0.04) 0%,
-      rgba(255, 255, 255, 0.04) 4%,
-      transparent 4%,
-      transparent 96%
-    ),
-    radial-gradient(
-      circle at 35% 55%,
-      rgba(255, 255, 255, 0.04) 0%,
-      rgba(255, 255, 255, 0.04) 4%,
-      transparent 4%,
-      transparent 96%
-    ),
-    linear-gradient(45deg, rgb(26, 21, 192), rgb(171, 83, 239));
-  height: 100lvh;
   font-family: Poppins, sans-serif;
   font-size: 32px;
+  height: 100lvh;
+  background-image: radial-gradient(
+      circle at 85% 1%,
+      hsla(190, 0%, 93%, 0.05) 0%,
+      hsla(190, 0%, 93%, 0.05) 96%,
+      transparent 96%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 14% 15%,
+      hsla(190, 0%, 93%, 0.05) 0%,
+      hsla(190, 0%, 93%, 0.05) 1%,
+      transparent 1%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 60% 90%,
+      hsla(190, 0%, 93%, 0.05) 0%,
+      hsla(190, 0%, 93%, 0.05) 20%,
+      transparent 20%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 79% 7%,
+      hsla(190, 0%, 93%, 0.05) 0%,
+      hsla(190, 0%, 93%, 0.05) 78%,
+      transparent 78%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 55% 65%,
+      hsla(190, 0%, 93%, 0.05) 0%,
+      hsla(190, 0%, 93%, 0.05) 52%,
+      transparent 52%,
+      transparent 100%
+    ),
+    linear-gradient(135deg, rgb(37, 79, 222), rgb(96, 189, 244));
   text-align: center;
 }
 
@@ -100,6 +67,7 @@ main {
   margin: 0 auto;
 }
 
+/* MAIN */
 main {
   background-color: #f5f5f5;
   min-height: calc(100% - 150px);
@@ -112,50 +80,58 @@ main::-webkit-scrollbar {
   display: none;
 }
 
+/* TODO INPUT */
 #task-input {
+  /* TODO: make sticky */
+
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   background-color: #edebeb;
+
   display: flex;
   flex-direction: row;
-
   gap: 0;
 }
 
 #task-input input {
   padding: 0 25px;
   border: none;
+
   border-top-left-radius: 25px;
   border-top-right-radius: none;
   border-bottom-left-radius: none;
   border-bottom-right-radius: none;
 }
 
-#task-input :focus {
+#task-input input:focus {
   outline: none;
 }
 
 #task-input button {
   background-color: #60bdf4;
-  color: white;
+  color: #f5f5f5;
   border: none;
+
   border-top-left-radius: none;
   border-top-right-radius: 25px;
   border-bottom-left-radius: none;
   border-bottom-right-radius: none;
+
   width: 100%;
 }
 
 #task-input button:is(:hover, :focus) {
-  background-color: #60bdf4;
+  background-color: #60bef4c4;
   cursor: pointer;
 }
 
+/* TASK CONTAINER */
 .task-container {
-  margin: 0.4em;
-  padding: 0 15px;
+  margin: 0.4em 15px;
+  padding: 5px 15px;
+
   background-color: #edebeb;
-  border-radius: 15;
+  border-radius: 15px;
 }
 
 .task-container .task {
@@ -165,52 +141,58 @@ main::-webkit-scrollbar {
 }
 
 .task-container .task-controls .edit-btn {
-  color: green;
+  color: #008000;
+  transition: color 0.2s;
+}
+
+.task-container .task-controls .edit-btn:is(:hover, :focus) {
+  color: #00800095;
+  cursor: pointer;
 }
 
 .task-container .task-controls .delete-btn {
   color: #ff0000;
-  transition: color 0.3s;
-}
-
-.task-container .task-controls .edit-btn:is(:hover, :focus) {
-  color: rgb(100, 226, 100);
-  cursor: pointer;
+  transition: color 0.2s;
 }
 
 .task-container .task-controls .delete-btn:is(:hover, :focus) {
-  color: #df9f9f;
-  transition: color 0.3s;
+  color: #ff0000a4;
+  cursor: pointer;
 }
 
-.task-edit-modal {
+/* MODAL */
+.task_edit-modal {
   max-width: 600px;
   border: none;
   padding: 1em;
-  background-color: white;
+  background-color: #f5f5f5;
   border-radius: 25px;
+
   top: 35%;
   left: 50%;
+
   translate: -50% -50%;
 }
 
-.task-edit-modal input {
+.task_edit-modal input {
   display: block;
   border: none;
   padding: 0 15px;
   margin-bottom: 20px;
 }
 
-.task-edit-modal button {
+.task_edit-modal button {
   background-color: #60bdf4;
-  border-radius: none;
+  color: #f5f5f5;
+  border: none;
   border-radius: 10px;
   padding: 0 15px;
-  color: #f5f5f5;
 }
-.task-edit-modal button#task-edit-btn-close {
-  background-color: #ff0000;
+
+.task_edit-modal button#task_edit-btn-close {
+  background-color: #ff0000a4;
 }
-.task-edit-modal button:hover {
-  cursor: po;
+
+.task_edit-modal button:hover {
+  cursor: pointer;
 }

@@ -1,19 +1,20 @@
-const tasksContainers = document.querySelector("#task-container");
+const tasksContainer = document.querySelector("#tasks-container");
 const form = document.querySelector("#task-input");
-const taskEditModal = document.querySelector(".task-edit-modal");
-const taskEditBtn = document.querySelector("#task-edit-btn");
-const taskEditBtnClosev = document.querySelector("#task-edit-btn-close");
-let todosLosTodo = [];
+const taskEditModal = document.querySelector(".task_edit-modal");
+const taskEditBtn = document.querySelector("#task_edit-btn");
+const taskEditBtnClose = document.querySelector("#task_edit-btn-close");
+let todosLosTodos = [];
 
 // LOAD TASKS
 function loadTasks() {
-  todosLosTodo = JSON.parse(localStorage.getItem("tasks"));
+  tasksContainer.textContent = "";
+  todosLosTodos = JSON.parse(localStorage.getItem("tasks"));
 
-  if (todosLosTodo && todosLosTodo.length > 0) {
-    const listaDeTodos = todosLosTodo.map((task) =>
+  if (todosLosTodos && todosLosTodos.length > 0) {
+    const listaDeTodos = todosLosTodos.map((task) =>
       createTaskItem(task.task_description, task.id)
     );
-    tasksContainers.insertAdjacentHTML("beforeend", listaDeTodos.join(""));
+    tasksContainer.insertAdjacentHTML("beforeend", listaDeTodos.join(""));
   }
 }
 loadTasks();
@@ -31,62 +32,87 @@ form.addEventListener("submit", function (e) {
   const id = createId();
   const html = createTaskItem(task, id);
 
-  tasksContainers.insertAdjacentHTML("beforeend", html);
+  tasksContainer.insertAdjacentHTML("beforeend", html);
   document.querySelector("#task").value = "";
 
-  todosLosTodo.push({
+  todosLosTodos.push({
     id: id,
     task_description: task,
   });
 
-  localStorage.setItem("tasks", JSON.stringify(todosLosTodo));
+  localStorage.setItem("tasks", JSON.stringify(todosLosTodos));
 });
 
-//EDITAR TO-DO CON (EVEN DELEGATION)
-
-tasksContainers.addEventListener("click", function (e) {
+// EDITAR TO-DO / ELIMINAR TO-DO (event delegation)
+tasksContainer.addEventListener("click", function (e) {
   const target = e.target;
   const li = target.closest("li");
+
+  //   Editar
   if (target.dataset.edit) {
     taskEditModal.showModal();
     taskEditModal.dataset.task_id = target.dataset.edit;
-    //const newTask = prompt("escribe tu todo");
+    // const newTask = prompt("Escribe tu to-do");
     // if (!newTask) return;
-    //  const p = li.querySelector(".task-description");
+
+    // const p = li.querySelector(".task-description");
     // p.textContent = newTask;
   }
+
+  //   Eliminar
   if (target.dataset.delete) {
-    tasksContainers.removeChild(li);
+    tasksContainer.removeChild(li);
+    const taskId = target.dataset.delete;
+    todosLosTodos = todosLosTodos.filter((task) => task.id != taskId);
+    localStorage.setItem("tasks", JSON.stringify(todosLosTodos));
   }
 });
 
 taskEditBtn.addEventListener("click", function (e) {
-  const newDescription = document.querySelector("#task-edit").value;
+  const newDescription = document.querySelector("#task_edit").value;
   if (!newDescription) return;
 
   const taskId = taskEditModal.dataset.task_id;
-  todosLosTodo = todosLosTodo.map((task) => 
-  if (task.id == taskId))
+  todosLosTodos = todosLosTodos.map((task) => {
+    if (task.id == taskId) {
+      return {
+        id: task.id,
+        task_description: newDescription,
+      };
+    }
+    return task;
+  });
+  localStorage.setItem("tasks", JSON.stringify(todosLosTodos));
+
+  taskEditModal.dataset.task_id = "";
+  document.querySelector("#task_edit").value = "";
+  taskEditModal.close();
+
+  loadTasks();
 });
-taskEditBtnClosev.addEventListener("click", function (e) {
+
+taskEditBtnClose.addEventListener("click", function (e) {
   taskEditModal.close();
 });
-//helper functions
+
+// HELPER FUNCTIONS
 function createTaskItem(task, id) {
   return `
-  <li class="task-container">
-<div class="task">
-  <p class="task-description">${task}</p>
-  <div class="task-controls">
-    <button class="edit-btn">
-      <i class="fa-solid fa-pen-to-square" data-edit=${id}></i>
-    </button>
-    <button class="delete-btn">
-      <i class="fa-solid fa-trash" data-delete=${id}></i>
-    </button>
-  </div>
-</div>
-</li>`;
+    <li class="task-container">
+        <div class="task">
+            <p class="task-description">${task}</p>
+
+            <div class="task-controls">
+                <button class="edit-btn">
+                    <i class="fa-solid fa-pen-to-square" data-edit=${id}></i>
+                </button>
+                <button class="delete-btn">
+                    <i class="fa-solid fa-trash" data-delete=${id}></i>
+                </button>
+            </div>
+        </div>
+    </li>
+  `;
 }
 
 function createId() {
